@@ -223,7 +223,7 @@ export default function OrderManagementTable() {
     setDetailsDialogOpen(true);
   };
 
-  const handleMarkDelivered = async (orderId: number) => {
+  const handleMarkDelivered = async (orderId: any) => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL || ''}/api/orders/${orderId}`, {
         method: 'PUT',
@@ -461,7 +461,7 @@ export default function OrderManagementTable() {
                               {order?.status !== 'DELIVERED' && order?.status !== 'CANCELLED' && (
                                 <Tooltip title="Mark as Delivered">
                                   <IconButton 
-                                    onClick={() => handleMarkDelivered(order.order_id)} 
+                                    onClick={() => handleMarkDelivered(order?.id)} 
                                     color="success" 
                                     size="small" 
                                     sx={{ bgcolor: '#ecfdf5', '&:hover': { bgcolor: '#d1fae5' } }}
